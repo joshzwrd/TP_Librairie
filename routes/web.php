@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Book;
+use App\Models\People;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages/home');
+});
+
+Route::get('/books', function () {
+    $books = Book::all();
+
+    return view('pages/book', [
+        'books' => $books
+    ]);
+});
+
+Route::get('/peoples', function () {
+    $peoples = People::all();
+
+    return view('pages/people', [
+        'peoples' => $peoples
+    ]);
 });
